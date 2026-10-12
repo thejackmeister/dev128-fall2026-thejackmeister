@@ -1,6 +1,17 @@
 # Starting file for Lab 1 - Chapter 12 - book_catalog.py program
 # Include your name, date, and class in the assignment comments (replace this line)
 
+def list_books(book_catalog):
+
+    # Loop through each book in the book catalog dictionary, printing the title, author, and publication year for each item.
+    for book in book_catalog:
+        print()
+        print(f"Title: {book}")
+        print(f"Author: {book_catalog[book]["author"]}")
+        print(f"Publication Year: {book_catalog[book]["pubyear"]}")
+
+    return
+
 def show_book(book_catalog):
     title = input("Title: ")
     if title in book_catalog:
@@ -44,6 +55,7 @@ def display_menu():
     print("The Book Catalog program")
     print()
     print("COMMAND MENU")
+    print("list - List all books in catalog")
     print("show - Show book info")
     print("add -  Add book")
     print("edit - Edit book")
@@ -66,7 +78,10 @@ def main():
     while True:
         print()
         command = input("Command: ").lower()
-        if command == "show":
+
+        if command == "list":
+            list_books(book_catalog)
+        elif command == "show":
             show_book(book_catalog)
         elif command == "add":
             add_edit_book(book_catalog, mode="add")
